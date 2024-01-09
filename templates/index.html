@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>    
+    <title>Generador de Contraseña</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+    <div id="main" class="container-fluid">
+        <div class="container div-form">
+            <h1 class="text-center titulo">Bienvenido al generador de contraseña</h1>
+            <form id="contrasenaForm" action="/generar_contrasena" method="POST">
+                <label>Ingresa el número de longitud de tu contraseña: (Máximo 12)</label>
+                <input type="number" name="selector_longitud" id="selector_longitud">
+                <br>
+                <h2 id="contrasenaGenerada">{{ contrasena_generada }}</h2>
+                <br>
+                <input type="submit" value="Generar Contraseña" onclick="mostrarCargando()">
+            </form>
+            <button onclick="copiarContrasena()">Copiar Contraseña</button>
+        </div>
+    </div>
+
+    {% if error %}
+        <div id="error_message" style="display: none;">{{ error }}</div>
+    {% endif %}
+
+</body>
+</html>
+
